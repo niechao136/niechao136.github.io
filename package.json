@@ -5,8 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "generate": "node scripts/generatePostIndex.cjs",
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "build": "npm run generate && vitepress build docs",
     "preview": "vitepress preview docs",
     "deploy": "gh-pages -d docs/.vitepress/dist"
   },
