@@ -4,10 +4,10 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: '我的博客',
   description: '基于 VitePress 构建的个人博客',
-  base: '/vite-blog/',
+  base: '/',
 
   head: [
-    ['link', { rel: 'icon', href: '/vite-blog/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
 
   themeConfig: {
