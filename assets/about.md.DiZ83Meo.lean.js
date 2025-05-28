@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as r,ae as o}from"./chunks/framework.DvccZNqS.js";const d=JSON.parse('{"title":"关于我","description":"","frontmatter":{"title":"关于我"},"headers":[],"relativePath":"about.md","filePath":"about.md"}'),i={name:"about.md"};function l(n,t,_,s,c,p){return r(),a("div",null,t[0]||(t[0]=[o("",4)]))}const f=e(i,[["render",l]]);export{d as __pageData,f as default};
