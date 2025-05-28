@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "generate": "node scripts/generatePostIndex.cjs",
+    "generate": "node scripts/generate.cjs",
     "dev": "vitepress dev docs",
     "build": "npm run generate && vitepress build docs",
     "preview": "vitepress preview docs",

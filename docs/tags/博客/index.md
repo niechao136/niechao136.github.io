@@ -12,7 +12,7 @@ const posts = [
       "vitepress",
       "博客"
     ],
-    "link": "/posts/2025/hello-vitepress"
+    "link": "/posts/2025/2025052701/"
   }
 ]
 </script>

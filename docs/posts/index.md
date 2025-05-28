@@ -12,7 +12,7 @@ const posts = [
       "vitepress",
       "博客"
     ],
-    "link": "/posts/2025/hello-vitepress"
+    "link": "/posts/2025/2025052701/"
   },
   {
     "title": "如何将 VitePress 项目部署到 GitHub Pages",
@@ -23,7 +23,7 @@ const posts = [
       "部署",
       "github-pages"
     ],
-    "link": "/posts/2025/vite-deploy-github-pages"
+    "link": "/posts/2025/2025052702/"
   },
   {
     "title": "使用 Vue 3 Composition API 的实践",
@@ -34,7 +34,7 @@ const posts = [
       "composition-api",
       "前端"
     ],
-    "link": "/posts/2025/vue3-composition-api"
+    "link": "/posts/2025/2025052703/"
   }
 ]
 </script>

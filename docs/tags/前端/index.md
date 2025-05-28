@@ -1,5 +1,5 @@
 ---
-title: 标签 - composition-api
+title: 标签 - 前端
 ---
 
 <script setup>
@@ -13,12 +13,12 @@ const posts = [
       "composition-api",
       "前端"
     ],
-    "link": "/posts/2025/vue3-composition-api"
+    "link": "/posts/2025/2025052703/"
   }
 ]
 </script>
 
-# 🏷️ 标签：composition-api
+# 🏷️ 标签：前端
 
 
 <PostCard

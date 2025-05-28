@@ -13,7 +13,7 @@ const posts = [
       "部署",
       "github-pages"
     ],
-    "link": "/posts/2025/vite-deploy-github-pages"
+    "link": "/posts/2025/2025052702/"
   }
 ]
 </script>
