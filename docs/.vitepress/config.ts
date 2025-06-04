@@ -21,5 +21,8 @@ export default defineConfig({
       { text: '关于我', link: '/about/' },
     ],
     sidebar,
+    search: {
+      provider: 'local',
+    },
   },
 })
