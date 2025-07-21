@@ -45,6 +45,7 @@ MCP 使用客户端-服务器架构：
 - Tool：供模型调用的功能接口
     
     ```ts
+    // 工具定义结构
     {
       name: string, // 工具名（唯一）
       description?: string, // 描述信息（可选）
