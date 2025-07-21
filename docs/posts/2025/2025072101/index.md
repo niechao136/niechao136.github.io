@@ -170,7 +170,7 @@ Forecast: {period['detailedForecast']}
     return "\n---\n".join(forecasts)
 ```
 
-最后，启动 FastMCP，注意，transport 应设为 streamable-http，stdio 无法产生服务 URL。
+最后，启动 FastMCP，注意，transport 应设为 streamable-http，transport 为 stdio 时无法产生服务 URL。
 
 ```python
 if __name__ == "__main__":
