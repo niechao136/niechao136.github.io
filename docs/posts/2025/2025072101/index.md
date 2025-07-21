@@ -1,7 +1,7 @@
 ---
 title: MCP 学习笔记
-date: 2025-07-04
-tags: [Dify, https]
+date: 2025-07-21
+tags: [Dify, MCP]
 description: 记录 MCP 的学习笔记
 ---
 
@@ -65,7 +65,7 @@ MCP 使用客户端-服务器架构：
 - 工具调用：使用 tools/call 请求调用指定工具
 
 
-## Dify 1.6 使用 MCP
+## 二、Dify 1.6 使用 MCP
 
 ### 添加 MCP 类型的工具
 
@@ -73,7 +73,7 @@ MCP 使用客户端-服务器架构：
 
 ![添加 MCP 服务](tool.png)
 
-例如，可以引入高德地图的 MCP Server
+例如，可以引入高德地图的 MCP Server，更多 MCP 可以参考 [MCP 广场](https://www.modelscope.cn/mcp)
 
 ```yaml
 https://mcp.amap.com/mcp?key=您在高德官网上申请的key
@@ -117,7 +117,7 @@ https://mcp.amap.com/mcp?key=您在高德官网上申请的key
 ![工作流节点](flow_copy.png)
 
 
-## 开发 MCP Server
+## 三、开发 MCP Server
 
 首先创建一个 FastMCP：
 注意，stateless_http 应设为 True，否则，会报错误：Bad Request: Missing session ID；

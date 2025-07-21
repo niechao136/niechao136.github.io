@@ -8,5 +8,14 @@ export default {
   enhanceApp({ app }) {
     app.component('PostCard', PostCard)
     app.component('ProjectCard', ProjectCard)
+    if (typeof window !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', () => {
+        const links = document.querySelectorAll('a[href^="http"]')
+        links.forEach(link => {
+          link.setAttribute('target', '_blank')
+          link.setAttribute('rel', 'noopener noreferrer')
+        })
+      })
+    }
   }
 }
