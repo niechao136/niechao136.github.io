@@ -5,6 +5,12 @@ on:
     branches:
       - master
 
+
+concurrency:
+  group: "pages-deploy"
+  cancel-in-progress: true
+
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
