@@ -202,7 +202,7 @@ import asyncio
 import os
 from contextlib import AsyncExitStack
 from typing import Optional
-
+import json
 from dotenv import load_dotenv
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
@@ -305,33 +305,39 @@ class MCPClient:
         final_text = []
         while True:
             choice = response.choices[0]
+
             if getattr(choice.message, "tool_calls", None):
-                for call in choice.message.tool_calls:
-                    tool_name = call.function.name
-                    args = call.function.arguments
+                # 构造 assistant 消息（包含全部 tool_call）
+                tool_messages = [{
+                    "role": "assistant",
+                    "tool_calls": choice.message.tool_calls
+                }]
 
-                    import json
-                    args = json.loads(args)
-                    result = await self.session.call_tool(tool_name, args)
+                # 并发执行所有工具调用
+                results = await asyncio.gather(*[
+                    self.session.call_tool(call.function.name, json.loads(call.function.arguments))
+                    for call in choice.message.tool_calls
+                ])
 
-                    messages.append({
-                        "role": "assistant",
-                        "tool_calls": [call]
-                    })
-                    messages.append({
+                # 构造 tool 响应消息
+                for i, call in enumerate(choice.message.tool_calls):
+                    tool_messages.append({
                         "role": "tool",
                         "tool_call_id": call.id,
-                        "name": tool_name,
-                        "content": result.content
+                        "name": call.function.name,
+                        "content": results[i].content
                     })
 
-                    # 再次请求模型
-                    response = await self.client.chat.completions.create(
-                        model="qwen-plus",
-                        messages=messages,
-                        tools=available_tools
-                    )
-                    break
+                # 添加到对话上下文
+                messages.extend(tool_messages)
+
+                # 再次请求模型
+                response = await self.client.chat.completions.create(
+                    model="qwen-plus",
+                    messages=messages,
+                    tools=available_tools,
+                    tool_choice="auto"
+                )
             else:
                 final_text.append(choice.message.content)
                 break
