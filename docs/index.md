@@ -2,7 +2,7 @@
 layout: home
 title: 我的博客
 hero:
-  name: 你好，我是博主
+  name: 你好，我是niechao136
   text: 欢迎来到我的知识仓库
   tagline: 记录学习、成长与思考
   actions:
