@@ -66,6 +66,9 @@ MCP 使用客户端-服务器架构：
 - 工具调用：使用 tools/call 请求调用指定工具
 
 
+更多内容可以可以参考 [MCP 官网](https://modelcontextprotocol.io/introduction)
+
+
 ## 二、Dify 1.6 使用 MCP
 
 ### 添加 MCP 类型的工具
@@ -121,8 +124,9 @@ https://mcp.amap.com/mcp?key=您在高德官网上申请的key
 ## 三、开发 MCP Server
 
 首先创建一个 FastMCP：
-注意，stateless_http 应设为 True，否则，会报错误：Bad Request: Missing session ID；
-host 应设为 0.0.0.0 否则默认的 127.0.0.1 只有本地能访问到。
+
+- stateless_http 应设为 True，否则，会报错误：Bad Request: Missing session ID；
+- host 应设为 0.0.0.0 否则默认的 127.0.0.1 只有本地能访问到。
 
 ```python
 from mcp.server.fastmcp import FastMCP
@@ -170,7 +174,9 @@ Forecast: {period['detailedForecast']}
     return "\n---\n".join(forecasts)
 ```
 
-最后，启动 FastMCP，注意，transport 应设为 streamable-http，transport 为 stdio 时无法产生服务 URL。
+最后，启动 FastMCP：
+
+- transport 应设为 streamable-http，transport 为 stdio 时无法产生服务 URL。
 
 ```python
 if __name__ == "__main__":
@@ -180,3 +186,8 @@ if __name__ == "__main__":
 
 运行效果如图：
 ![运行效果](mcp_server.png)
+
+
+项目完整代码：[mcp_weather](https://github.com/niechao136/mcp_weather)
+
+另外一个多语言翻译服务器的代码：[mcp_i18n](https://github.com/niechao136/mcp_i18n)
