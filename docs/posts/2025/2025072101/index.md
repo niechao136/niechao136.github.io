@@ -11,7 +11,7 @@ description: 记录 MCP 的学习笔记
 
 ### MCP 简介
 
-**Model Context Protocol（MCP）** 是一个开放协议，标准化了应用程序如何向大型语言模型（LLM）提供上下文。它就像 AI 世界的 USB-C 接口，使不同的客户端和数据源/工具之间能无缝连接。
+**Model Context Protocol（MCP）** 是一种开放协议，用于标准化应用程序向大语言模型（LLMs）提供上下文的方式。你可以把 MCP 想象成 AI 应用的 USB-C 接口。就像 USB-C 为设备连接各种外设和配件提供了统一的标准一样，MCP 也为 AI 模型连接不同的数据源和工具提供了统一的标准接口。
 
 ### MCP 架构
 
@@ -19,9 +19,9 @@ MCP 使用客户端-服务器架构：
 
 ![MCP 架构图](architecture.svg)
 
-- MCP Host：如 Claude 桌面应用、IDE 或 AI 工具
-- MCP Client：连接 MCP 服务器的客户端协议
-- MCP Server：通过**标准协议**暴露能力的小型服务
+- MCP Host：通过 MCP 访问数据的 AI 工具，如 Claude Desktop、Cursor 等
+- MCP Client：协议客户端，与服务器保持一对一连接
+- MCP Server：轻量级程序，通过标准化的 MCP（模型上下文协议）暴露特定功能。
 - 本地资源：本机上的文件、数据库、服务
 - 远程服务：互联网上的 API 等外部系统
 
