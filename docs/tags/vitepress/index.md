@@ -12,6 +12,7 @@ const posts = [
       "vitepress",
       "博客"
     ],
+    "series": "",
     "link": "/posts/2025/2025052701/"
   },
   {
@@ -23,6 +24,7 @@ const posts = [
       "部署",
       "github-pages"
     ],
+    "series": "",
     "link": "/posts/2025/2025052702/"
   }
 ]

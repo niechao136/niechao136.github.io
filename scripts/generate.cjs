@@ -4,6 +4,7 @@ const path = require('path')
 const POSTS_DIR = path.join(__dirname, '../docs/posts')
 const TAGS_DIR = path.join(__dirname, '../docs/tags')
 const ARCHIVES_DIR = path.join(__dirname, '../docs/archives')
+const SERIES_DIR = path.join(__dirname, '../docs/series')
 
 function parseFrontMatter(content) {
   const match = content.match(/^---\r?\n([\s\S]+?)\r?\n---/)
@@ -145,6 +146,47 @@ function generate() {
 
     fs.writeFileSync(path.join(ARCHIVES_DIR, 'index.md'), archivesLines.join('\n'), 'utf-8')
   }
+  function generateSeries() {
+    if (!fs.existsSync(SERIES_DIR)) fs.mkdirSync(SERIES_DIR)
+    const seriesMap = {}
+    for (const post of posts) {
+      if (post.series) {
+        if (!seriesMap[post.series]) seriesMap[post.series] = []
+        seriesMap[post.series].push(post)
+      }
+    }
+
+    const seriesIndex = [
+      '---',
+      'title: 系列',
+      '---\n',
+      '# 📖 所有系列\n'
+    ]
+    Object.keys(seriesMap).sort().forEach(series => {
+      seriesIndex.push(`- [${series}](./${series}/) (${seriesMap[series].length})`)
+    })
+    fs.writeFileSync(path.join(SERIES_DIR, 'index.md'), seriesIndex.join('\n'), 'utf-8')
+
+    for (const [series, seriesPosts] of Object.entries(seriesMap)) {
+      const lines = [
+        '---',
+        `title: 系列 - ${series}`,
+        '---\n',
+        '<script setup>',
+        `const posts = ${JSON.stringify(seriesPosts, null, 2)}`,
+        '</script>\n',
+        `# 📖 系列：${series}\n`,
+        '<PostCard',
+        '  v-for="post in posts"',
+        '  :key="post.link"',
+        '  v-bind="post"',
+        '/>',
+      ]
+      const seriesPath = path.join(SERIES_DIR, series)
+      if (!fs.existsSync(seriesPath)) fs.mkdirSync(seriesPath)
+      fs.writeFileSync(path.join(seriesPath, 'index.md'), lines.join('\n'), 'utf-8')
+    }
+  }
   function generateSidebar() {
     // sidebar 生成
     const sidebarGroups = {}
@@ -192,6 +234,7 @@ function generate() {
         date: fm.date || '',
         description: fm.description || '',
         tags: Array.isArray(fm.tags) ? fm.tags : [],
+        series: fm.series || '',
         link: `/posts${relativePath}`
       }
     })
@@ -200,7 +243,8 @@ function generate() {
   generateIndex()
   generateTag()
   generateArchive()
-  console.log('✅ 已生成 index、tags、archives 页面')
+  generateSeries()
+  console.log('✅ 已生成 index、tags、archives、series 页面')
   generateSidebar()
   console.log('✅ 已生成 sidebar.ts 文件')
 }

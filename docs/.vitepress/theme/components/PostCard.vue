@@ -6,6 +6,7 @@ defineProps({
   description: String,
   tags: Array,
   link: String,
+  series: String,
 })
 </script>
 
@@ -16,6 +17,10 @@ defineProps({
       🗓️ {{ date }}
     </div>
     <div class="post-card-desc">{{ description }}</div>
+    <div class="post-card-series" v-if="series">
+      📖 属于系列：
+      <a :href="withBase(`/series/${series}`)" class="post-series">{{ series }}</a>
+    </div>
     <div class="post-card-tags">
       <template v-for="tag in tags">
         <a :href="withBase(`/tags/${tag}`)" class="post-tag">#{{ tag }}</a>
@@ -51,6 +56,16 @@ defineProps({
   margin-top: 0.5rem;
   font-size: 0.95rem;
   color: var(--vp-c-text-1);
+}
+.post-card-series {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+.post-series {
+  margin-left: 0.25rem;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
 }
 .post-card-tags {
   margin-top: 0.5rem;

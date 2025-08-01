@@ -13,6 +13,7 @@ const posts = [
       "composition-api",
       "前端"
     ],
+    "series": "",
     "link": "/posts/2025/2025052703/"
   }
 ]

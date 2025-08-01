@@ -13,6 +13,7 @@ const posts = [
       "部署",
       "github-pages"
     ],
+    "series": "",
     "link": "/posts/2025/2025052702/"
   }
 ]
