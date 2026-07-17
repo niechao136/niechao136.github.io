@@ -1,9 +1,23 @@
 export default {
   "/posts/": [
     {
+      "text": "2026 年文章",
+      "collapsed": false,
+      "items": [
+        {
+          "text": "用 MCP 协议让大模型真正「接管」你的服务器——DevOps MCP 运维平台开发实录",
+          "link": "/posts/2026/2026071701/"
+        }
+      ]
+    },
+    {
       "text": "2025 年文章",
       "collapsed": false,
       "items": [
+        {
+          "text": "使用 Docker 部署 Jenkins",
+          "link": "/posts/2025/2025080101/"
+        },
         {
           "text": "MCP 学习笔记",
           "link": "/posts/2025/2025072101/"

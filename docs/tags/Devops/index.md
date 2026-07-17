@@ -1,5 +1,5 @@
 ---
-title: 标签 - MCP
+title: 标签 - Devops
 ---
 
 <script setup>
@@ -14,22 +14,11 @@ const posts = [
     ],
     "series": "",
     "link": "/posts/2026/2026071701/"
-  },
-  {
-    "title": "MCP 学习笔记",
-    "date": "2025-07-21",
-    "description": "记录 MCP 的学习笔记",
-    "tags": [
-      "Dify",
-      "MCP"
-    ],
-    "series": "",
-    "link": "/posts/2025/2025072101/"
   }
 ]
 </script>
 
-# 🏷️ 标签：MCP
+# 🏷️ 标签：Devops
 
 
 <PostCard

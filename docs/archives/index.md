@@ -6,6 +6,17 @@ title: 归档
 const posts = {
   "2025": [
     {
+      "title": "使用 Docker 部署 Jenkins",
+      "date": "2025-08-01",
+      "description": "记录如何使用 Docker 部署 Jenkins",
+      "tags": [
+        "Docker",
+        "Jenkins"
+      ],
+      "series": "",
+      "link": "/posts/2025/2025080101/"
+    },
+    {
       "title": "MCP 学习笔记",
       "date": "2025-07-21",
       "description": "记录 MCP 的学习笔记",
@@ -73,12 +84,32 @@ const posts = {
       "series": "",
       "link": "/posts/2025/2025052703/"
     }
+  ],
+  "2026": [
+    {
+      "title": "用 MCP 协议让大模型真正「接管」你的服务器——DevOps MCP 运维平台开发实录",
+      "date": "2026-07-17",
+      "description": "记录 DevOps MCP 运维平台开发过程",
+      "tags": [
+        "MCP",
+        "Devops"
+      ],
+      "series": "",
+      "link": "/posts/2026/2026071701/"
+    }
   ]
 }
 </script>
 
 # 🗂️ 文章归档
 
+
+## 2026
+<PostCard
+  v-for="post in posts['2026']"
+  :key="post.link"
+  v-bind="post"
+/>
 
 ## 2025
 <PostCard

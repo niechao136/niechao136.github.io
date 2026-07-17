@@ -4,8 +4,11 @@ title: 标签
 
 # 🏷️ 所有标签
 
+- [Devops](./Devops/) (1)
 - [Dify](./Dify/) (3)
-- [MCP](./MCP/) (1)
+- [Docker](./Docker/) (1)
+- [Jenkins](./Jenkins/) (1)
+- [MCP](./MCP/) (2)
 - [Ubuntu](./Ubuntu/) (1)
 - [composition-api](./composition-api/) (1)
 - [github-pages](./github-pages/) (1)
