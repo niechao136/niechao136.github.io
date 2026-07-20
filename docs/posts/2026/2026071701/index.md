@@ -87,18 +87,18 @@ LLM 调用 `execute_action("my-project", "deploy", {"branch": "v1.2.0"})` 时，
 ### 典型的 LLM 运维流程
 
 ```
-用户：帮我检查一下服务器状态，有问题就重启
+用户：帮我检查一下 mcp XX 上 dify 项目的状态。
 
 LLM：调用 get_node_overview()
-     → { "api-server": "unhealthy", "nginx": "healthy", "worker": "healthy" }
+     → { "dify": { "available_actions": [{ "action_type": "status" }] } }
 
-LLM：调用 execute_action("api-server", "restart")
+LLM：调用 execute_action("dify", "status")
      → { "task_id": "abc-123", "status": "pending" }
 
 LLM：等待 3 秒后调用 get_task_status("abc-123", log_offset=0)
-     → { "status": "success", "new_log": "Container restarted successfully" }
+     → { "status": "success", "new_log": "Container status: healthy" }
 
-LLM：回复用户「api-server 已成功重启，其他服务正常」
+LLM：回复用户「dify 状态正常」
 ```
 
 整个过程用户只说了一句话。
@@ -175,8 +175,6 @@ exit code 为 0（有更新）时，自动触发 `deploy` 命令。
 **专用运维用户**：所有命令通过 `devops` 用户执行，配合 sudo 白名单（只允许 docker、git 等特定命令），即使 API Key 泄露也无法执行高权限操作。
 
 **API Key 项目级权限**：每个 API Key 可以配置允许访问的项目列表，一个 Key 只能操作被授权的项目。
-
-**路径安全检查**：读取文件时防止目录遍历攻击（如 `../../etc/passwd`）。
 
 **操作审计**：所有操作（包括 AI 触发和人工触发）都写入审计日志，区分 `actor_type: human/ai`。
 
